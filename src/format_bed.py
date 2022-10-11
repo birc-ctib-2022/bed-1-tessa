@@ -29,8 +29,8 @@ def main() -> None:
 
     # With all the options handled, we just need to do the real work
     # FIXME: put your code here
-    for line in args.infile: 
-        print_line(parse_line(line),args.outfile)
+    for line in args.infile: #for loop -> for item line in table args from input infile
+        print_line(parse_line(line),args.outfile) #take input line, run parse_line then print_line to outfile 
 
 
 if __name__ == '__main__':
