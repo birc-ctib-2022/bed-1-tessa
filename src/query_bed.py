@@ -32,8 +32,8 @@ def main() -> None:
     table = Table() #make an empty table
 
     for line in args.bed: #for every line in the bed file
-        variable = parse_line(line) #make a new variable called variable which is the parsed version of the input line 
-        table.add_line = print(variable) #run the product of the above code through print_line then adding it to the table 
+        new_line= parse_line(line)
+        table.add_line(new_line)
     
     for index_args in args.query: 
     #for every line in input query 
@@ -58,9 +58,9 @@ def main() -> None:
         # return self.tbl[chrom]
        
         for index_chromosome_list in chromosome_list: 
-            bed_chromosome = variable[0]
-            bed_chromosome_start = int(variable [1])
-            bed_chromosome_end = int(variable [2])
+            bed_chromosome = line[0]
+            bed_chromosome_start = int(line [1])
+            bed_chromosome_end = int(line [2])
 
             if query_chromosome_start <= bed_chromosome_start and query_chromosome_end>= bed_chromosome_end:
                 print_line(index_chromosome_list,args.outfile)
