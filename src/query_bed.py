@@ -59,10 +59,10 @@ def main() -> None:
        
         for index_chromosome_list in chromosome_list: 
             bed_chromosome = chromosome_list[0]
-            bed_chromosome_start = int(chromosome_list[1])
-            bed_chromosome_end = int(chromosome_list[2])
+            bed_chromosome_start = (chromosome_list[1])
+            bed_chromosome_end = (chromosome_list[2])
 
-            if query_chromosome_start <= bed_chromosome_start and query_chromosome_end>= bed_chromosome_end:
+            if int(query_chromosome_start) <= int(bed_chromosome_start) and int(query_chromosome_end)>= int(bed_chromosome_end):
                 print_line(index_chromosome_list,args.outfile)
 
 
