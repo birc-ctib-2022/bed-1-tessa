@@ -29,17 +29,17 @@ def main() -> None:
     # With all the options handled, we just need to do the real work
     # FIXME: put your code here
 
-    table = Table()
+    table = Table() #make an empty table
 
-    for line in args.bed: 
-        variable = parse_line(line)
-        table.add_line = print_line(variable)
+    for line in args.bed: #for every line in the bed file
+        variable = parse_line(line) #make a new variable called variable which is the parsed version of the input line 
+        table.add_line = print(variable) #run the product of the above code through print_line then adding it to the table 
     
     for index_args in args.query: 
     #for every line in input query 
         query_setup = line.split("\t")
         #make a new variable called query_setup 
-        # hat is each line with each item tab seperated 
+        #that is each line with each item tab seperated 
         query_chromosome = query_setup [0]
         #make a new variable called query_chrom 
         #that is the 0 index which we know is the name of the 
@@ -51,7 +51,7 @@ def main() -> None:
         #make a new variable called query_chrom_end
         #that is an integer that is the end of the feature 
 
-        chromosome_list= table.get_chrom(query_chrom) 
+        chromosome_list= table.get_chrom(query_chromosome) 
         # REMINDER from query.py this was set up: 
         #  def get_chrom(self, chrom: str) -> list[BedLine]:
         #"""Get all the lines that sits on chrom"""

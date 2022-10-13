@@ -66,8 +66,46 @@ When you have implemented the tool, answer the questions below, commit it to Git
 
 How does your method for extracting features work?
 
+My method works by 
+1. (query_bed.py lines 34-36) Creating an empty table 
+called table and filling it by using a for loop to 
+take every line in args.bed which is the bed input 
+and run it through the parse_line and print_line code 
+that makes it readable to our program even if it was
+ put together sloppily (mixture of tab and space 
+ seperated etc.)
+2. (query_bed.py lines 38-52) 
+Taking the query file, and seperating each index 
+value so that it corresponds with what the query is 
+searching for (chromosome name, start place or end.)
+3. (query_bed.py line 54) 
+Applying the get_chrome code to first extract all 
+the lines that sit on the chromosome of interest 
+identified in the query file and adding it to a table
+called chromosome_list. 
+4. (query_bed.py line 65-66) 
+From that table with all of the features in the 
+correct chromosome, removing all of the features that 
+are not in the correct interval using an if loop, 
+leaving only the features that were queried. 
+5. Printing what the correct features to the outfile. 
+
+
 What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomse from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
 
-Did you, at any point, exploit that our features are on single nucleotides and not larger regions?
+The complexity of this algoroithm is O*m*n 
+where n is the length of the query file and 
+m is the length of the whole bed file 
+because the complexity is a result of the 
+function of the two input files. 
+
+Did you, at any point, exploit that our 
+features are on single nucleotides and not
+larger regions?
+
+Yes because I do not worry about overlapping
+features complicating the input processing. 
 
 If you did, what would it take to handle general regions?
+
+To handle general regions, I would have to clarify to the algorythm what to do if a feature was only partially within the region of interest and either include or exclude it depneding on my goals for the algorythm. 
