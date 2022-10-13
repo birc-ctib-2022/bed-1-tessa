@@ -44,10 +44,10 @@ def main() -> None:
         #make a new variable called query_chrom 
         #that is the 0 index which we know is the name of the 
         #chromosome 
-        query_chromosome_start = int(query_setup [1])
+        query_chromosome_start = query_setup [1]
         #make a new variable called query_chrom_start
         #that is an integer that is the start of the feature 
-        query_chromosome_end = int(query_setup [2])
+        query_chromosome_end = query_setup [2]
         #make a new variable called query_chrom_end
         #that is an integer that is the end of the feature 
 
