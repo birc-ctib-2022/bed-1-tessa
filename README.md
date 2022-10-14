@@ -67,23 +67,23 @@ When you have implemented the tool, answer the questions below, commit it to Git
 How does your method for extracting features work?
 
 My method works by 
-1. (query_bed.py lines 34-36) Creating an empty table 
+1. (query_bed.py lines 31-36) Creating an empty table 
 called table and filling it by using a for loop to 
 take every line in args.bed which is the bed input 
 and run it through the parse_line and print_line code 
 that makes it readable to our program even if it was
  put together sloppily (mixture of tab and space 
  seperated etc.)
-2. (query_bed.py lines 38-52) 
+2. (query_bed.py lines 38-48) 
 Taking the query file, and seperating each index 
 value so that it corresponds with what the query is 
 searching for (chromosome name, start place or end.)
-3. (query_bed.py line 54) 
+3. (query_bed.py line 50) 
 Applying the get_chrome code to first extract all 
 the lines that sit on the chromosome of interest 
 identified in the query file and adding it to a table
 called chromosome_list. 
-4. (query_bed.py line 65-66) 
+4. (query_bed.py line 70) 
 From that table with all of the features in the 
 correct chromosome, removing all of the features that 
 are not in the correct interval using an if loop, 

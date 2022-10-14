@@ -30,28 +30,45 @@ def main() -> None:
 
     table = Table() #make an empty table
 
-    for line in args.bed: #for every line in the bed file
-        new_line= parse_line(line)
-        table.add_line(new_line)
-    
+    for line in args.bed: #for every line in the bed input file
+        new_line= parse_line(line) #parse line
+        table.add_line(new_line) # add it to table 
+    #now input is tab seperated and ready to extract
+
     for index_query in args.query: 
+    #for every line in query input file 
         query_setup = index_query.split("\t")
+        #make it tab seperated (because it should come in as 
+        #bedfile)
         query_chrom = query_setup [0]
+        #assign query_chrom to index 0 
         query_chrom_start = query_setup [1] 
+        #assign query_chrom_start to index 1 
         query_chrom_end = query_setup [2]
+        #assign query_chrom_end to index 2 
 
         chromosome_list= table.get_chrom(query_chrom) 
         # REMINDER from query.py this was set up: 
         #  def get_chrom(self, chrom: str) -> list[BedLine]:
         #"""Get all the lines that sits on chrom"""
         # return self.tbl[chrom]
+        #so now chromosome_list is a table with all of the lines 
+        #that sit on the chromosome identified in query[0]
+        
        
         for index_bed in chromosome_list: 
+        #for every line in chromosome_list which is table 
+        #with all of the lines that sit on the desired chromosomes 
+        #identified in query file 
             bed_chrom = index_bed[0]
+            #assign bed_chrom to index [0]
             bed_chrom_start = index_bed[1]
+            #assgin bed_chrom_start to index [1]
             bed_chrom_end = index_bed[2]
+            #assign bed_chrom_end to index [2]
 
             if int(query_chrom_start) <= int(bed_chrom_start) and int(query_chrom_end)>= int(bed_chrom_end):
+            #if line in chromosome list is in the correct interval, add it to output     
                 print_line(index_bed, args.outfile)
 
 
