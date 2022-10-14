@@ -46,14 +46,14 @@ def main() -> None:
         #"""Get all the lines that sits on chrom"""
         # return self.tbl[chrom]
        
-        for index_bed in args.bed: 
+        for index_bed in chromosome_list: 
             bed_setup = index_bed.split("\t")
             bed_chrom = bed_setup[0]
             bed_chrom_start = bed_setup[1]
             bed_chrom_end = bed_setup[2]
 
             if int(query_chrom_start) <= int(bed_chrom_start) and int(query_chrom_end)>= int(bed_chrom_end):
-                print_line(chromosome_list, args.outfile)
+                print_line(index_bed, args.outfile)
 
 
  
