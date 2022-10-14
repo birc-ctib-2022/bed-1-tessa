@@ -47,10 +47,9 @@ def main() -> None:
         # return self.tbl[chrom]
        
         for index_bed in chromosome_list: 
-            bed_setup = index_bed.split("\t")
-            bed_chrom = bed_setup[0]
-            bed_chrom_start = bed_setup[1]
-            bed_chrom_end = bed_setup[2]
+            bed_chrom = index_bed[0]
+            bed_chrom_start = index_bed[1]
+            bed_chrom_end = index_bed[2]
 
             if int(query_chrom_start) <= int(bed_chrom_start) and int(query_chrom_end)>= int(bed_chrom_end):
                 print_line(index_bed, args.outfile)
