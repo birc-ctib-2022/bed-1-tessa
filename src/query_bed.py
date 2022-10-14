@@ -34,26 +34,26 @@ def main() -> None:
         new_line= parse_line(line)
         table.add_line(new_line)
     
-    for index_args in args.query: 
-        query_setup = index_args.split("\t")
-        query_chromosome = query_setup [0]
-        query_chromosome_start = query_setup [1] 
-        query_chromosome_end = query_setup [2]
+    for index_query in args.query: 
+        query_setup = index_query.split("\t")
+        query_chrom = query_setup [0]
+        query_chrom_start = query_setup [1] 
+        query_chrom_end = query_setup [2]
 
-        chromosome_list= table.get_chrom(query_chromosome) 
+        chromosome_list= table.get_chrom(query_chrom) 
         # REMINDER from query.py this was set up: 
         #  def get_chrom(self, chrom: str) -> list[BedLine]:
         #"""Get all the lines that sits on chrom"""
         # return self.tbl[chrom]
        
-        for index_chromosome_list in args.query: 
-            bed_setup = index_chromosome_list.split("\t")
-            bed_chromosome = bed_setup[0]
-            bed_chromosome_start = bed_setup[1]
-            bed_chromosome_end = bed_setup[2]
+        for index_bed in args.bed: 
+            bed_setup = index_bed.split("\t")
+            bed_chrom = bed_setup[0]
+            bed_chrom_start = bed_setup[1]
+            bed_chrom_end = bed_setup[2]
 
-            if int(query_chromosome_start) <= int(bed_chromosome_start) and int(query_chromosome_end)>= int(bed_chromosome_end):
-                print_line(index_chromosome_list, args.outfile)
+            if int(query_chrom_start) <= int(bed_chrom_start) and int(query_chrom_end)>= int(bed_chrom_end):
+                print_line(chromosome_list, args.outfile)
 
 
  
