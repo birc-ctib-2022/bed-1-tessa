@@ -27,7 +27,6 @@ def main() -> None:
     args = argparser.parse_args()
 
     # With all the options handled, we just need to do the real work
-    # FIXME: put your code here
 
     table = Table() #make an empty table
 
@@ -36,20 +35,10 @@ def main() -> None:
         table.add_line(new_line)
     
     for index_args in args.query: 
-    #for every line in input query 
-        query_setup = line.split("\t")
-        #make a new variable called query_setup 
-        #that is each line with each item tab seperated 
+        query_setup = index_args.split("\t")
         query_chromosome = query_setup [0]
-        #make a new variable called query_chrom 
-        #that is the 0 index which we know is the name of the 
-        #chromosome 
-        query_chromosome_start = query_setup [1]
-        #make a new variable called query_chrom_start
-        #that is an integer that is the start of the feature 
+        query_chromosome_start = query_setup [1] 
         query_chromosome_end = query_setup [2]
-        #make a new variable called query_chrom_end
-        #that is an integer that is the end of the feature 
 
         chromosome_list= table.get_chrom(query_chromosome) 
         # REMINDER from query.py this was set up: 
