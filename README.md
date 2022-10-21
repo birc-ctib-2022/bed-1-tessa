@@ -93,7 +93,7 @@ leaving only the features that were queried.
 
 What is the complexity of the algorithm, as a function of the size of the two input files? When you answer this, you need to know that you can get the list of chromosomse from a `query.Table` in constant time, but it does, of course, take longer to run through all the lines in it.
 
-The complexity of this algoroithm is O*m*n 
+The complexity of this algoroithm is $O(mn)$ 
 where n is the length of the query file and 
 m is the length of the whole bed file 
 because the complexity is a result of the 
@@ -105,6 +105,17 @@ larger regions?
 
 Yes because I do not worry about overlapping
 features complicating the input processing. 
+We had the capacity to exploit the assumption that features are only one nucleotide long 
+when we used the code in line 31 of bed.py where we defined the parse_line function. 
+This function is the first step in processing the bed arguments files, and it states: 
+"assert bed_line.chrom_start + 1 == bed_line.chrom_end" 
+which means that we did not have to define the start and end 
+of the features individually, the end of the feature is defined in terms of the start of the feature. 
+However, in my actual code in query_bed.py, I manually establish the start and end of the 
+feature based on the bed input which declares both, so I could remove this assertion in the function 
+definition and still use query_bed.py to process bed files with longer, more general regions. 
+
+
 
 If you did, what would it take to handle general regions?
 
